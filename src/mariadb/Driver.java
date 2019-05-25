@@ -22,10 +22,10 @@ public class Driver {
 				System.out.println("3. Remove employee");
 				System.out.println("4. Display employees");
 				System.out.println("5. Exit");
-
+				
 				userin = in.nextInt();
 				System.out.println();
-
+				
 				if(userin == 1) {
 					addEmp(myConn);
 				}
@@ -57,13 +57,15 @@ public class Driver {
 
 	public static void edit(Connection myConn) {
 		int id = 0;
-		String fname = "";
+		int data = 0;
 		
 		System.out.print("What is the employee's ID? ");
 		id = in.nextInt();
-		System.out.print("What is the new first name? ");
-		fname = in.next();
-		EditEmp emp = new EditEmp(myConn, fname, id);
+		System.out.println("What would you like to edit?");
+		System.out.println("1. First name");
+		System.out.println("2. Last name");
+		data = in.nextInt();
+		EditEmp emp = new EditEmp(myConn, data, id);
 		emp.empEdit();
 	}
 	
@@ -71,17 +73,19 @@ public class Driver {
 		int id = 0;
 		String fname = "";
 		String lname = "";
-
-		System.out.print("What is the employee's ID? ");
-		id = in.nextInt();
-
+		
+		/*
+		 * System.out.print("What is the employee's ID? ");
+		 * id = in.nextInt();
+		 */
+		
 		System.out.print("What is their first name? ");
 		fname = in.next();
-
+		
 		System.out.print("What is their last name? ");
 		lname = in.next();
-
-		Addemp emp = new Addemp(myConn, id, fname, lname);
+		
+		Addemp emp = new Addemp(myConn, fname, lname);
 		emp.addEmployee();
 	}
 

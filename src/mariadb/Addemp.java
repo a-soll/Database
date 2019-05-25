@@ -7,7 +7,6 @@ import java.sql.*;
  *
  */
 public class Addemp {
-	private int id = 0;
 	private String fname = "";
 	private String lname = "";
 	private Connection myConn = null;
@@ -15,8 +14,7 @@ public class Addemp {
 	/**
 	 * @param args
 	 */
-	public Addemp(Connection myConn, int id, String fname, String lname) {
-		this.id = id;
+	public Addemp(Connection myConn, String fname, String lname) {
 		this.fname = fname;
 		this.lname = lname;
 		this.myConn = myConn;
@@ -24,11 +22,11 @@ public class Addemp {
 
 	public void addEmployee() {
 		try {
-			String query = " insert into employees (id, fname, lname)" + " values (?, ?, ?)";
+			String query = " insert into employees (fname, lname)" + " values (?, ?)";
 			PreparedStatement prepStmt = myConn.prepareStatement(query);
-			prepStmt.setInt(1, id);
-			prepStmt.setString(2, fname);
-			prepStmt.setString(3, lname);
+			// prepStmt.setInt(1, id);
+			prepStmt.setString(1, fname);
+			prepStmt.setString(2, lname);
 
 			prepStmt.execute();
 			System.out.printf("%s %s added\n\n", fname, lname);
